@@ -19,7 +19,7 @@ public abstract class JSONTemplateData {
 
     protected String indent() {
         StringBuilder sb = new StringBuilder();
-        sb.append("&#32;");
+        sb.append(" ");
         for(int i=0; i <=level*2; i++) {
             sb.append(" ");
         }
