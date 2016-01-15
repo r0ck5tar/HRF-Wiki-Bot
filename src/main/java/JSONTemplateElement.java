@@ -3,9 +3,9 @@
  */
 public class JSONTemplateElement  extends JSONTemplateData{
     private JSONElementType type;
-    private String key;
-    public JSONTemplateElement(int level, String key, JSONElementType type) {
-        super(level);
+    String key;
+    public JSONTemplateElement(boolean required, int level, String key, JSONElementType type) {
+        super(required, level);
         this.type = type;
         this.key = key;
     }
@@ -14,7 +14,8 @@ public class JSONTemplateElement  extends JSONTemplateData{
     public String toTemplateString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(indent()).append("<span style=\"color:red\">\"").append(key).append("\"</span>:");
+        //stringBuilder.append(indent());
+        stringBuilder.append("<span style{{=}}\"color:red\">\"").append(key).append("\"</span>:");
 
         switch (type) {
             case STRING:

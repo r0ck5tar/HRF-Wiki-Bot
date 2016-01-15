@@ -14,7 +14,7 @@ public class TemplateGenerator implements NamedTemplateDataListener {
 
     private TemplateGenerator(Set<String> responseStructureNames) {
         for(String responseStructureName: responseStructureNames) {
-            jsonResponseStructures.put(responseStructureName, new JSONTemplateObject(this, "HRF/" + responseStructureName, 0, (JSONObject) models.get(responseStructureName)));
+            jsonResponseStructures.put(responseStructureName, new JSONTemplateObject(true, this, "HRF/" + responseStructureName, 0, (JSONObject) models.get(responseStructureName)));
         }
     }
 
@@ -53,7 +53,7 @@ public class TemplateGenerator implements NamedTemplateDataListener {
 
     public static void printAllTemplates() {
         for(JSONTemplateNamedData objectStructure: instance.objectStructures ) {
-            System.out.println(objectStructure.path + "\n" + objectStructure.toTemplateString());
+            System.out.println(objectStructure.path + "\n" + objectStructure.toTemplateString() + "\n\n");
         }
     }
 }

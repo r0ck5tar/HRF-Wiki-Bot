@@ -5,10 +5,16 @@ import org.json.simple.JSONObject;
  */
 public abstract class JSONTemplateData {
     protected int level = 0;
+    protected boolean required = false;
 
 
     public JSONTemplateData(int level) {
         this.level = level;
+    }
+
+    public JSONTemplateData(boolean required, int level) {
+        this(level);
+        this.required = required;
     }
 
     protected String indent() {

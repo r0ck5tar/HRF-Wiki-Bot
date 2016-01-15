@@ -10,8 +10,8 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
     private JSONTemplateData items;
     private JSONObject swaggerDescription;
 
-    public JSONTemplateArray(NamedTemplateDataListener listener, String parentPath, int level, String key, JSONObject swaggerDescription) {
-        super(listener, level, key);
+    public JSONTemplateArray(boolean required, NamedTemplateDataListener listener, String parentPath, int level, String key, JSONObject swaggerDescription) {
+        super(required, listener, level, key);
         this.path = parentPath.concat("/").concat(key);
         this.swaggerDescription = swaggerDescription;
         generateTemplate();
@@ -22,7 +22,7 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
     public void generateTemplate() {
         if(swaggerDescription.containsKey("$ref")) {
             String objectKey = (String) swaggerDescription.get("$ref");
-            items = new JSONTemplateObject(listener, path, level+1,key, TemplateGenerator.getSwaggerObjectDescription(objectKey));
+            items = new JSONTemplateObject(false, listener, path + "/"  + key.substring(0, key.length()-1), level+1, TemplateGenerator.getSwaggerObjectDescription(objectKey));
         }
         else {
             //not sure about arrays. can an array contain arrays? How does Swagger represent that?
@@ -36,10 +36,14 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(indent()).append("<span style=\"color:red\">\"").append(key).append("\"</span>: [\n");
-        stringBuilder.append(items.indent()).append("{{#if:{{{"+ (1) +"|}}}|{{{" + (1) +"}}}|}}");
+        stringBuilder.append("{{#if:{{{"+ (1) +"|}}}|{{{" + (1) +"}}}|}}");
 
-        for(int i=2; i<15; i++) {
-            stringBuilder.append("{{#if:{{{").append(i).append("|}}}|,\n").append(items.indent()).append("{{{").append(i).append("}}}|}}");
+        for(int i=2; i<5; i++) {
+            stringBuilder.append("{{#if:{{{").append(i).append("|}}}|,\n");
+            if(items instanceof JSONTemplateElement) {
+                stringBuilder.append(items.indent());
+            }
+            stringBuilder.append("{{{").append(i).append("}}}|}}");
         }
         stringBuilder.append(indent()).append("\n").append(indent()).append("]");
 
