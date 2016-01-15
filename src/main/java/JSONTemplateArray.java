@@ -36,7 +36,8 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(indent()).append("<span style=\"color:red\">\"").append(key).append("\"</span>: [\n");
-        stringBuilder.append("{{#if:{{{"+ (1) +"|}}}|{{{" + (1) +"}}}|}}");
+        stringBuilder.append(items.indent());
+        stringBuilder.append("{{#if:{{{"+ (1) +"|}}}|\n{{{" + (1) +"}}}|}}");
 
         for(int i=2; i<5; i++) {
             stringBuilder.append("{{#if:{{{").append(i).append("|}}}|,\n");

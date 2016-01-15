@@ -109,12 +109,14 @@ public class JSONTemplateObject extends JSONTemplateNamedData{
                 if(!property.required) {
                     stringBuilder.append("{{#if:{{{").append(((JSONTemplateElement) property).key).append("|}}}|<code>");
                     stringBuilder.append("\n").append(property.indent()).append("</code>").append(property.toTemplateString());
+                    comma(i);
                     closeIf(property);
                 }
                 else{
                     stringBuilder.append("\n").append(property.indent()).append(property.toTemplateString());
+                    comma(i);
                 }
-                comma(i);
+
             }
         }
 
