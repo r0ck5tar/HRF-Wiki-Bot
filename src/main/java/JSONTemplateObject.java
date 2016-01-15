@@ -69,7 +69,7 @@ public class JSONTemplateObject extends JSONTemplateNamedData{
             JSONTemplateData firstProperty = properties.get(0);
             if (firstProperty instanceof JSONTemplateObject) {
                 indent();
-                stringBuilder.append(indent()).append("  {{{").append(((JSONTemplateObject) firstProperty).key).append("|{{")
+                stringBuilder.append(firstProperty.indent()).append("{{{").append(((JSONTemplateObject) firstProperty).key).append("|{{")
                         .append(((JSONTemplateObject) firstProperty).path).append("}}}}}");
             }
             else{
@@ -79,10 +79,10 @@ public class JSONTemplateObject extends JSONTemplateNamedData{
 
         for(int i = 1; i < properties.size(); i++) {
             JSONTemplateData property = properties.get(i);
-            stringBuilder.append(",\n").append(indent());
-            ;
+            stringBuilder.append(",\n");
+
             if (property instanceof JSONTemplateObject) {
-                stringBuilder.append("  {{{").append(((JSONTemplateObject) property).key).append("|{{")
+                stringBuilder.append(property.indent()).append("{{{").append(((JSONTemplateObject) property).key).append("|{{")
                         .append(((JSONTemplateObject) property).path).append("}}}}}");
             }
             else{

@@ -53,7 +53,7 @@ public class TemplateGenerator implements NamedTemplateDataListener {
 
     public static void printAllTemplates() {
         for(JSONTemplateNamedData objectStructure: instance.objectStructures ) {
-            System.out.println(objectStructure.path + "\n" + objectStructure.toTemplateString());
+            System.out.println(objectStructure.path + "\n" + objectStructure.toTemplateString() + "\n\n");
         }
     }
 }

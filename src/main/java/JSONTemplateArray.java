@@ -22,7 +22,7 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
     public void generateTemplate() {
         if(swaggerDescription.containsKey("$ref")) {
             String objectKey = (String) swaggerDescription.get("$ref");
-            items = new JSONTemplateObject(listener, path, level+1,key, TemplateGenerator.getSwaggerObjectDescription(objectKey));
+            items = new JSONTemplateObject(listener, path + "/"  + key.substring(0, key.length()-1), level+1, TemplateGenerator.getSwaggerObjectDescription(objectKey));
         }
         else {
             //not sure about arrays. can an array contain arrays? How does Swagger represent that?
@@ -36,10 +36,10 @@ public class JSONTemplateArray extends JSONTemplateNamedData {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(indent()).append("<span style=\"color:red\">\"").append(key).append("\"</span>: [\n");
-        stringBuilder.append(items.indent()).append("{{#if:{{{"+ (1) +"|}}}|{{{" + (1) +"}}}|}}");
+        stringBuilder.append("{{#if:{{{"+ (1) +"|}}}|{{{" + (1) +"}}}|}}");
 
-        for(int i=2; i<15; i++) {
-            stringBuilder.append("{{#if:{{{").append(i).append("|}}}|,\n").append(items.indent()).append("{{{").append(i).append("}}}|}}");
+        for(int i=2; i<5; i++) {
+            stringBuilder.append("{{#if:{{{").append(i).append("|}}}|,\n").append("{{{").append(i).append("}}}|}}");
         }
         stringBuilder.append(indent()).append("\n").append(indent()).append("]");
 
