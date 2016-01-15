@@ -4,6 +4,7 @@
 public class JSONTemplateElement  extends JSONTemplateData{
     private JSONElementType type;
     String key;
+
     public JSONTemplateElement(boolean required, int level, String key, JSONElementType type) {
         super(required, level);
         this.type = type;
