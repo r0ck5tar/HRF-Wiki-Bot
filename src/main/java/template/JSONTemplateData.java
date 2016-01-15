@@ -1,4 +1,4 @@
-import org.json.simple.JSONObject;
+package template;
 
 /**
  * Created by hakim on 14-Jan-16.

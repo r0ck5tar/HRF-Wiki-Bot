@@ -1,3 +1,5 @@
+package template;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -120,7 +122,7 @@ public class JSONTemplateObject extends JSONTemplateNamedData{
             }
         }
 
-        stringBuilder.append("\n").append(indent()).append(" }");
+        stringBuilder.append("\n").append(indent()).append("}");
 
         return stringBuilder.toString();
     }

@@ -1,3 +1,5 @@
+package template;
+
 /**
  * Created by hakim on 14-Jan-16.
  */

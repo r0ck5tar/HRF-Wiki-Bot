@@ -1,7 +1,6 @@
-import org.json.simple.JSONObject;
+package template;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.simple.JSONObject;
 
 /**
  * Created by hakim on 14-Jan-16.

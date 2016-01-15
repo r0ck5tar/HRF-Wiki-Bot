@@ -1,3 +1,5 @@
+package template;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -8,7 +10,13 @@ import java.util.*;
  */
 public class TemplateGenerator implements NamedTemplateDataListener {
     private Map<String, JSONTemplateObject> jsonResponseStructures = new HashMap<>();
-    private Set<JSONTemplateNamedData> objectStructures = new HashSet<>();
+    private Set<JSONTemplateNamedData> objectStructures = new TreeSet<>(new Comparator() {
+        @Override
+        public int compare(Object o1, Object o2) {
+            return ((JSONTemplateNamedData) o1).path.compareTo(((JSONTemplateNamedData) o2).path);
+            //return ((JSONTemplateNamedData) o1).path.length() - ((JSONTemplateNamedData) o2).path.length();
+        }
+    });
     private static JSONObject models;
     private static TemplateGenerator instance;
 
