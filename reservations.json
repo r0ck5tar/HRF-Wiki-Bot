@@ -1,0 +1,4445 @@
+{
+	"apiVersion": "0.8.0",
+	"swaggerVersion": "1.2",
+	"basePath": "https://test.webservices.1a.amadeus.net:51186/1ASIUAHPIHGBKG/V0/hotel",
+	"resourcePath": "/reservations",
+
+	"apis": [{
+		"path": "/reservations/{chainCode}",
+		"operations": [{
+			"method": "POST",
+			"nickname": "create-one-step",
+			"summary": "Create a reservation (1-step)",
+			"notes": "",
+			"type": "ReservationRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Reservation object to be created",
+				"required": true,
+				"type": "ReservationReq",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 201,
+				"message": "Created - Request has been fulfilled as expected and new resource has been created. This status code is used only in conjunction with POST method."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve",
+			"summary": "Retrieve reservation by confirmation number (last committed)",
+			"notes": "",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}, {
+			"method": "PUT",
+			"nickname": "modify-one-step",
+			"summary": "Modify the reservation (1-step)",
+			"notes": "",
+			"type": "ReservationModifyRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Modified reservation object",
+				"required": true,
+				"type": "ReservationReq",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}",
+		"operations": [{
+			"method": "PATCH",
+			"nickname": "partial-modify-one-step",
+			"summary": "Modify an existing reservation (1-step) providing only elements to update",
+			"notes": "One-step transaction.",
+			"type": "ReservationModifyRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Operations to perform on the existing reservation",
+				"required": true,
+				"type": "PartialReqList",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn't support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/cancel",
+		"operations": [{
+			"method": "PUT",
+			"nickname": "cancel-one-step",
+			"summary": "Cancel the reservation (1-step)",
+			"notes": "",
+			"type": "ReservationRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/pending",
+		"operations": [{
+			"method": "POST",
+			"nickname": "create",
+			"summary": "Create a new reservation (2-steps)",
+			"notes": "Two-step commit transaction. Has to be followed by a /commit to be confirmed",
+			"type": "ReservationRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Reservation object to be created",
+				"required": true,
+				"type": "ReservationReq",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 201,
+				"message": "Created - Request has been fulfilled as expected and new resource has been created. This status code is used only in conjunction with POST method."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/pending",
+		"operations": [{
+			"method": "PUT",
+			"nickname": "modify",
+			"summary": "Modify an existing reservation (2-steps)",
+			"notes": "Two-step commit transaction. Has to be followed by a /commit to be confirmed",
+			"type": "ReservationModifyRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Modified reservation object",
+				"required": true,
+				"type": "ReservationReq",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/pending",
+		"operations": [{
+			"method": "PATCH",
+			"nickname": "partial-modify",
+			"summary": "Modify an existing reservation (2-steps) providing only elements to update",
+			"notes": "",
+			"type": "ReservationModifyRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "body",
+				"description": "Operations to perform on the existing reservation",
+				"required": true,
+				"type": "PartialReqList",
+				"paramType": "body"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn't support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/cancel/pending",
+		"operations": [{
+			"method": "PUT",
+			"nickname": "cancel",
+			"summary": "Cancel the reservation (2-steps)",
+			"notes": "Two-step commit transaction. Has to be followed by /commit to be confirmed",
+			"type": "ReservationRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/commit",
+		"operations": [{
+			"method": "PUT",
+			"nickname": "commit",
+			"summary": "Commit the last pending image of the reservation",
+			"notes": "",
+			"type": "ReservationRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/pending",
+		"operations": [{
+			"method": "DELETE",
+			"nickname": "ignore",
+			"summary": "Revert the reservation to the last committed state, discarding the pending image",
+			"notes": "",
+			"type": "void",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/last",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve-last",
+			"summary": "Retrieve the last image of the reservation (pending or committed)",
+			"notes": "",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/{cfNumber}/committedSequenceNumber/{committedSequenceNumber}",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve-committedSequenceNumber",
+			"summary": "Retrieve a reservation by its confirmation number and committed sequence number",
+			"notes": "",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cfNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "committedSequenceNumber",
+				"required": true,
+				"type": "integer",
+				"format": "int32",
+				"description": "committed sequence number of the reservation image to retrieve",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/cx-number/{cxNumber}",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve-cx",
+			"summary": "Retrieve a reservation by its cancellation number",
+			"notes": "",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cxNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Cancellation Number",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query parameter"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/cx-number/{cxNumber}/committedSequenceNumber/{committedSequenceNumber}",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve-cx-committedSequenceNumber",
+			"summary": "Retrieve a reservation by its cancellation number and committed sequence number",
+			"notes": "",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "cxNumber",
+				"required": true,
+				"type": "string",
+				"minLength": 8,
+				"maxLength": 8,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric8] Hotel Cancellation Number",
+				"paramType": "path"
+			}, {
+				"name": "committedSequenceNumber",
+				"required": true,
+				"type": "integer",
+				"format": "int32",
+				"description": "committed sequence number of the reservation image to retrieve",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query parameter"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}, {
+		"path": "/reservations/{chainCode}/ext-cf-number/{extCfNumber}",
+		"operations": [{
+			"method": "GET",
+			"nickname": "retrieve-ext-cf",
+			"summary": "Retrieve a reservation by its external confirmation number",
+			"notes": "For example BK-94652 for a booking.com confirmation number",
+			"type": "ReservationRetRes",
+			"parameters": [{
+				"name": "chainCode",
+				"required": true,
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 3,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric2..3] Chain Code of property",
+				"paramType": "path"
+			}, {
+				"name": "extCfNumber",
+				"type": "string",
+				"required": true,
+				"minLength": 1,
+				"maxLength": 32,
+				"format": "alphanumeric",
+				"description": "[AlphaNumeric1..32] External Confirmation Number",
+				"paramType": "path"
+			}, {
+				"name": "history",
+				"required": false,
+				"type": "boolean",
+				"description": "Parameter used to request retrieve history",
+				"paramType": "query parameter"
+			}],
+			"responseMessages": [{
+				"code": 200,
+				"message": "OK - Standard response for successful HTTP request."
+			}, {
+				"code": 400,
+				"message": "Bad Request - Client sent a request that is not conforming to API. Client has to modify the request so that it passes. Most of functional error responses fall under this category. Response body must include troubleshooting information. 1) Invalid URI format 2) Parameters are not passing validation 3) Request is not valid (e.g. query for past date availability)"
+			}, {
+				"code": 403,
+				"message": "Forbidden - Server refuses to fulfil request for functional or security reasons. If it is for security reasons, the authentication will not solve the issue. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 404,
+				"message": "Not Found - Client requested resource that doesn't exist. Response body should include reason and must include troubleshooting information. "
+			}, {
+				"code": 406,
+				"message": "Not Acceptable - This status code is returned when resource doesn’t support requested method."
+			}, {
+				"code": 500,
+				"message": "Internal Server Error - Server was unable to process request due to unexpected problem that can't be corrected by client. Response body includes troubleshooting information. This error is not used to describe functional problems. Examples: Technical issues on server side. or Internal coding issue on server side."
+			}, {
+				"code": 504,
+				"message": "Gateway Timeout - This status code is returned by SI in case of timeout on backend side."
+			}]
+		}]
+	}],
+
+	"models": {
+		"ReservationReq": {
+			"id": "ReservationReq",
+			"required": ["hotelReservation"],
+			"properties": {
+				"hotelReservation": {
+					"$ref": "HotelReservationReq"
+				}
+			}
+		},
+
+		"PartialReq": {
+			"id": "PartialReq",
+			"required": ["op", "path"],
+			"properties": {
+				"op": {
+					"type": "string",
+					"enum": ["upsert", "append", "remove"]
+				},
+				"path": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+
+		"PartialReqList": {
+			"id": "PartialReqList",
+			"properties": {
+				"hotelReservationModifications": {
+					"type": "array",
+					"items": {
+						"$ref": "PartialReq"
+					}
+				}
+			}
+		},
+
+		"ReservationRes": {
+			"id": "ReservationRes",
+			"properties": {
+				"hotelReservation": {
+					"$ref": "HotelReservationRes"
+				},
+				"transactionStatus": {
+					"$ref": "TransactionStatus"
+				},
+				"pointOfSale": {
+					"$ref": "PointOfSale"
+				}
+			}
+		},
+
+		"ReservationModifyRes": {
+			"id": "ReservationModifyRes",
+			"properties": {
+				"hotelReservation": {
+					"$ref": "HotelReservationRes"
+				},
+				"modificationChanges": {
+					"type": "array",
+					"items": {
+						"$ref": "PartialReq"
+					}
+				},
+				"transactionStatus": {
+					"$ref": "TransactionStatus"
+				},
+				"pointOfSale": {
+					"$ref": "PointOfSale"
+				}
+			}
+		},
+
+		"ReservationRetRes": {
+			"id": "ReservationRetRes",
+			"properties": {
+				"hotelReservation": {
+					"$ref": "HotelReservationRetRes"
+				},
+				"history": {
+					"type": "array",
+					"items": {
+						"$ref": "History",
+						"description": "History of the transactions occurred on the requested reservation"
+					}
+				},
+				"transactionStatus": {
+					"$ref": "TransactionStatus"
+				},
+				"pointOfSale": {
+					"$ref": "PointOfSale"
+				}
+			}
+		},
+
+		"TransactionStatus": {
+			"id": "TransactionStatus",
+			"properties": {
+				"warnings": {
+					"type": "array",
+					"items": {
+						"$ref": "Warning"
+					}
+				},
+				"errors": {
+					"type": "array",
+					"items": {
+						"$ref": "Error"
+					}
+				}
+			}
+		},
+		"PointOfSale": {
+			"id": "PointOfSale",
+			"required": ["vendorCode"],
+			"properties": {
+				"vendorCode": {
+					"type": "string",
+					"description": "the vendor code of the creator of the reservation"
+				},
+				"channelSubCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "Sub channel code as it has been provided by the creator of the reservation"
+				}
+			}
+		},
+
+		"Warning": {
+			"id": "Warning",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Warning code"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Id of the warning"
+				},
+				"text": {
+					"type": "string",
+					"description": "Warning description"
+				},
+				"isPreventingCommit": {
+					"type": "boolean",
+					"description": "If true, means that a commit of this reservation is not possible due to this warning."
+				}
+			}
+		},
+		"Error": {
+			"id": "Error",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Error code"
+				},
+				"text": {
+					"type": "string",
+					"description": "Error description"
+				}
+			}
+		},
+
+		"HotelReservationReq": {
+			"id": "HotelReservationReq",
+			"required": ["resHolderId", "hotel", "roomStays"],
+			"properties": {
+				"isForcedSell": {
+					"type": "boolean",
+					"description": "Forced Sell indicator => Indicates that the reservation is forced"
+				},
+				"resHolderId": {
+					"type": "integer",
+					"description": "Reference to the reservation holder"
+				},
+				"groupName": {
+					"type": "string"
+				},
+				"bookingSource": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 16,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric2..16] Booking Source Number"
+				},
+				"reservationIds": {
+					"$ref": "ReservationIdsReq",
+					"description": "Collection of reservation IDs"
+				},
+				"option": {
+					"$ref": "Option",
+					"description": "Present only for tentative or non deduct booking"
+				},
+				"hotel": {
+					"$ref": "PropertyInfo",
+					"description": "The property info provides the unique identification of the property"
+				},
+				"roomStays": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomStayReq"
+					},
+					"description": "List of room stays (currently limited to 1)"
+				},
+				"guests": {
+					"type": "array",
+					"items": {
+						"$ref": "GuestReq"
+					},
+					"description": "List of guests, at least one guest is mandatory for a 1 step"
+				},
+				"comments": {
+					"type": "array",
+					"items": {
+						"$ref": "Comment"
+					},
+					"description": "List the comments. Miscellaneous information data at reservation level"
+				},
+				"profiles": {
+					"type": "array",
+					"items": {
+						"$ref": "Profile"
+					},
+					"description": "Collection of Profiles"
+				},
+				"guarantee": {
+					"$ref": "GuaranteeReq",
+					"description": "Details of the mean of guarantee chosen to guarantee the whole reservation. In case of a guarantee required for a stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee the reservation. In case of a deposit required for a stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"paymentDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "PaymentDetails"
+					},
+					"description": "Collection of Payment Details"
+				},
+				"corporateAccountInfo": {
+					"$ref": "CorporateAccountInfo",
+					"description": "Information on corporate account"
+				}
+			}
+		},
+
+		"HotelReservationRetRes": {
+			"id": "HotelReservationRetRes",
+			"required": ["resStatus", "imageStatus", "createDateTime", "lastUpdateDateTime", "isConfirmed", "reservationIds", "hotel", "ratePlans"],
+			"properties": {
+				"resStatus": {
+					"type": "string",
+					"enum": ["BK", "MY", "CL"],
+					"description": "BK in response to a create reservation, MY in response to a modify reservation, CL in response to a cancel reservation"
+				},
+				"imageStatus": {
+					"type": "string",
+					"enum": ["Pending", "Committed"],
+					"description": "Status of the image of the reservation: Pending => we have this status in 2 steps process after a create and before a commit. Committed => in 2 steps process, we have this status after commit, in 2 step process, we have this status after the reservation creation when all went fine."
+				},
+				"createDateTime": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Date and Time of creation"
+				},
+				"lastUpdateDateTime": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Date and time of the last active image"
+				},
+				"isConfirmed": {
+					"type": "boolean",
+					"description": "If false, the 'option' element at hotelreservation level is filled"
+				},
+				"isForcedSell": {
+					"type": "boolean",
+					"description": "Forced Sell indicator => Indicates that the reservation is forced"
+				},
+				"isPaidByPoint": {
+					"type": "boolean",
+					"description": "Indicates that the reservation is paid by point. Default value is false"
+				},
+				"resHolderId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Reference to the reservation holder. Mandatory for 1 step request"
+				},
+				"groupName": {
+					"type": "string"
+				},
+				"bookingSource": {
+					"type": "string"
+				},
+				"reservationIds": {
+					"$ref": "ReservationIdsRes"
+				},
+				"option": {
+					"$ref": "Option",
+					"description": "Present only for tentative or non deduct booking"
+				},
+				"hotel": {
+					"$ref": "PropertyInfoRes",
+					"description": "Property Information"
+				},
+				"roomTypes": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomType"
+					},
+					"description": "List of all room types used inside the reservation (currently limited to 1)"
+				},
+				"ratePlans": {
+					"type": "array",
+					"items": {
+						"$ref": "RatePlan"
+					},
+					"description": "List of all rate plans used inside the reservation (currently limited to 1)"
+				},
+				"roomStays": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomStayRes"
+					},
+					"description": "List of Room Stays (currently limited to 1)"
+				},
+				"guests": {
+					"type": "array",
+					"items": {
+						"$ref": "Guest"
+					}
+				},
+				"comments": {
+					"type": "array",
+					"items": {
+						"$ref": "Comment"
+					}
+				},
+				"guarantee": {
+					"$ref": "GuaranteeRes",
+					"description": "Details of the mean of guarantee chosen to guarantee the whole reservation. In case of a guarantee required for a stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee the reservation. In case of a deposit required for a stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"paymentDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "PaymentDetails"
+					},
+					"description": "Collection of Payment Details"
+				},
+				"fees": {
+					"type": "array",
+					"items": {
+						"$ref": "Fees"
+					},
+					"description": "List of Fees. Used only for modify and cancel actions"
+				},
+				"total": {
+					"$ref": "Total",
+					"description": "total Price of the reservation"
+				},
+				"profiles": {
+					"type": "array",
+					"items": {
+						"$ref": "Profile"
+					},
+					"description": "Collection of Profiles"
+				},
+				"totalCommissions": {
+					"$ref": "Amount"
+				},
+				"corporateAccountInfo": {
+					"$ref": "CorporateAccountInfo",
+					"description": "Information on corporate account"
+				},
+				"currency": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"description": "[Alphanumeric3] Currency code. Valid for all amounts in the response."
+				}
+			}
+		},
+		"HotelReservationRes": {
+			"id": "HotelReservationRes",
+			"required": ["resStatus", "imageStatus", "createDateTime", "lastUpdateDateTime", "isConfirmed", "reservationIds", "hotel", "ratePlans"],
+			"properties": {
+				"resStatus": {
+					"type": "string",
+					"enum": ["BK", "MY", "CL"],
+					"description": "BK in response to a create reservation, MY in response to a modify reservation, CL in response to a cancel reservation"
+				},
+				"imageStatus": {
+					"type": "string",
+					"enum": ["Pending", "Committed"],
+					"description": "Status of the image of the reservation: Pending => we have this status in 2 steps process after a create and before a commit. Committed => in 2 steps process, we have this status after commit, in 2 step process, we have this status after the reservation creation when all went fine."
+				},
+				"createDateTime": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Date and Time of creation"
+				},
+				"lastUpdateDateTime": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Date and time of the last active image"
+				},
+				"isConfirmed": {
+					"type": "boolean",
+					"description": "If false, the 'option' element at hotelreservation level is filled"
+				},
+				"isForcedSell": {
+					"type": "boolean",
+					"description": "Forced Sell indicator => Indicates that the reservation is forced"
+				},
+				"isPaidByPoint": {
+					"type": "boolean",
+					"description": "Indicates that the reservation is paid by point. Default value is false"
+				},
+				"resHolderId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Reference to the reservation holder. Mandatory for 1 step request"
+				},
+				"groupName": {
+					"type": "string"
+				},
+				"bookingSource": {
+					"type": "string"
+				},
+				"reservationIds": {
+					"$ref": "ReservationIdsRes"
+				},
+				"option": {
+					"$ref": "Option",
+					"description": "Present only for tentative or non deduct booking"
+				},
+				"hotel": {
+					"$ref": "PropertyInfoRes",
+					"description": "Property Information"
+				},
+				"roomTypes": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomType"
+					},
+					"description": "List of all room types used inside the reservation (currently limited to 1)"
+				},
+				"ratePlans": {
+					"type": "array",
+					"items": {
+						"$ref": "RatePlan"
+					},
+					"description": "List of all rate plans used inside the reservation (currently limited to 1)"
+				},
+				"roomStays": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomStayRes"
+					},
+					"description": "List of Room Stays (currently limited to 1)"
+				},
+				"guests": {
+					"type": "array",
+					"items": {
+						"$ref": "Guest"
+					}
+				},
+				"comments": {
+					"type": "array",
+					"items": {
+						"$ref": "Comment"
+					}
+				},
+				"guarantee": {
+					"$ref": "GuaranteeRes",
+					"description": "Details of the mean of guarantee chosen to guarantee the whole reservation. In case of a guarantee required for a stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee the reservation. In case of a deposit required for a stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"paymentDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "PaymentDetails"
+					},
+					"description": "Collection of Payment Details"
+				},
+				"fees": {
+					"type": "array",
+					"items": {
+						"$ref": "Fees"
+					},
+					"description": "List of Fees. Used only for modify and cancel actions"
+				},
+				"total": {
+					"$ref": "Total",
+					"description": "total Price of the reservation"
+				},
+				"profiles": {
+					"type": "array",
+					"items": {
+						"$ref": "Profile"
+					},
+					"description": "Collection of Profiles"
+				},
+				"totalCommissions": {
+					"$ref": "Amount"
+				},
+				"corporateAccountInfo": {
+					"$ref": "CorporateAccountInfo",
+					"description": "Information on corporate account"
+				},
+				"currency": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"description": "[Alphanumeric3] Currency code. Valid for all amounts in the response."
+				}
+			}
+		},
+
+		"ReservationIdsReq": {
+			"id": "ReservationIdsReq",
+			"properties": {
+				"cfNumber": {
+					"type": "string",
+					"minLength": 8,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric8] Hotel Confirmation Number. Not mandatory because already provided in the URI. Used only for modify action"
+				},
+				"imageId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Image ID (unique per confirmation number). Used only for modify action"
+				},
+				"pnr": {
+					"$ref": "Pnr",
+					"description": "PNR container"
+				},
+				"extCfNumber": {
+					"$ref": "ExtCfNumber",
+					"description": "Container for External Confirmation Number"
+				},
+				"pmsCfNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"description": "[String1..20] PMS confirmation number"
+				},
+				"unsolicitedCancelId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..64] Unique Identifier of the reservation generated by GDS original vendor."
+				}
+			}
+		},
+
+		"Pnr": {
+			"id": "Pnr",
+			"required": ["number"],
+			"properties": {
+				"number": {
+					"type": "string",
+					"minLength": 5,
+					"maxLength": 6,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric5..6] PNR Number"
+				},
+				"source": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric2] Source of the PNR Number"
+				}
+			}
+		},
+
+		"ExtCfNumber": {
+			"id": "ExtCfNumber",
+			"required": ["number"],
+			"properties": {
+				"number": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 32,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..32] External Confirmation Number"
+				},
+				"source": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric2] Source of external Confirmation Number (ID of the originator Channel)"
+				}
+			}
+		},
+
+		"Option": {
+			"id": "Option",
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["Tentative", "NonDeduct"]
+				},
+				"deadline": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Option date and GMT time before which the Option booking should be confirmed. This field is mandatory if “type”=Tentative"
+				}
+			}
+		},
+
+		"Indicators": {
+			"id": "Indicators",
+			"required": ["type", "value"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["ForceSell", "No-show", "IsOption"]
+				},
+				"value": {
+					"type": "boolean"
+				}
+			}
+		},
+
+		"PropertyInfo": {
+			"id": "PropertyInfo",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "string",
+					"minLength": 5,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric5..8]"
+				},
+				"distribInfo": {
+					"$ref": "DistribPropertyInfo",
+					"description": "Distributed property information coming from vendor channel"
+				}
+			}
+		},
+		"PropertyInfoRes": {
+			"id": "PropertyInfoRes",
+			"required": ["chainCode", "code"],
+			"properties": {
+				"chainCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 3,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric2..3]"
+				},
+				"brandCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 3,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric2..3]"
+				},
+				"code": {
+					"type": "string",
+					"minLength": 5,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric5..8]"
+				},
+				"propertyName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..64]"
+				},
+				"cityCode": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"format": "alpha",
+					"description": "[Alpha3]"
+				},
+				"marketingLines": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					}
+				},
+				"distribInfo": {
+					"$ref": "DistribPropertyInfo",
+					"description": "Distributed property information coming from vendor channel"
+				}
+			}
+		},
+		"DistribPropertyInfo": {
+			"id": "DistribPropertyInfo",
+			"properties": {
+				"chainCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "Chain code of the property booked as it is distributed on vendor channel"
+				},
+				"cityCode": {
+					"type": "string",
+					"format": "alphanumeric",
+					"description": "City code of the property booked as it is distributed on vendor channel"
+				},
+				"code": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "Property code of the property booked as it is distributed on vendor channel"
+				}
+			}
+		},
+		"RoomStayReq": {
+			"id": "RoomStayReq",
+			"required": ["roomRates"],
+			"properties": {
+				"roomStayStatus": {
+					"type": "string",
+					"enum": ["In-house", "Checked out", "No-show", "Reserved", "Waitlisted"],
+					"description": "RoomStay status on PMS side"
+				},
+				"paymentStatus": {
+					"type": "string",
+					"enum": ["Payment received", "Waiting payment"],
+					"description": "Indicates if the payment has already been received or not"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Stay index. Will identify the RoomStay inside the reservation all along the reservation life. Used only for modify action"
+				},
+				"externalStayId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Used to identify a Stay on external booking Engines/ GDSs side"
+				},
+				"guestOccIds": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"description": "Reference to the guests occupants of the RoomStay"
+				},
+				"stayHolderId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Reference to guest stay holder"
+				},
+				"roomRates": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomRateReq"
+					},
+					"description": "List of room rates (currently limited to 1)"
+				},
+				"guarantee": {
+					"$ref": "GuaranteeReq",
+					"description": "Details of the mean of guarantee chosen to guarantee its stay. In case of a guarantee required for the stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee its stay. In case of a deposit required for the stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"comments": {
+					"type": "array",
+					"items": {
+						"$ref": "Comment"
+					},
+					"description": "List the comments"
+				},
+				"specialRequests": {
+					"type": "array",
+					"items": {
+						"$ref": "SpecialRequest"
+					},
+					"description": "List the special requests"
+				},
+				"serviceRequests": {
+					"type": "array",
+					"items": {
+						"$ref": "ServiceRequest"
+					},
+					"description": "List the service requests"
+				},
+				"mainAddress": {
+					"$ref": "Address",
+					"description": "Address of the main guest"
+				},
+				"addresses": {
+					"type": "array",
+					"items": {
+						"$ref": "AddressWithGuestName"
+					}
+				},
+				"telephones": {
+					"type": "array",
+					"items": {
+						"$ref": "TelephoneWithGuestName"
+					}
+				},
+				"emails": {
+					"$ref": "EmailWithGuestName"
+				},
+				"arrivalTime": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] Local hotel time when guests plan to arrive at the hotel, i.e. 22:00"
+				},
+				"departureTime": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] Local hotel time when guests plan to leave the hotel, i.e. 10:00"
+				},
+				"arrivalTransport": {
+					"$ref": "ArrivalTransport",
+					"description": "Details of the mean of transport used by the guests to reach the hotel (or the area)"
+				},
+				"departureTransport": {
+					"$ref": "DepartureTransport",
+					"description": "Details of the mean of transport used by the guests to leave the hotel (or the area)"
+				},
+				"frequentTraveller": {
+					"$ref": "FrequentTraveller",
+					"description": "Loyalty program of the guests with an airline"
+				},
+				"loyaltyProgram": {
+					"$ref": "LoyaltyProgram",
+					"description": "Loyalty program of the guests with hotel provider"
+				},
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] language code of the guests. Must be ISO 639-1"
+				}
+			}
+		},
+
+
+		"RoomStayRes": {
+			"id": "RoomStayRes",
+			"required": ["id", "startDate", "endDate", "roomRates", "actionStatus", "consolidatedRoomStayStatus", "channelPreferredRate"],
+			"properties": {
+				"roomStayStatus": {
+					"type": "string",
+					"enum": ["In-house", "Checked out", "No-show", "Reserved", "Waitlisted"],
+					"description": "RoomStay status on PMS side"
+				},
+				"consolidatedRoomStayStatus": {
+					"type": "string",
+					"enum": ["Guaranteed", "Tentative", "NonGuaranteedHold", "WaitListed", "Cancelled"],
+					"description": "Consolidated status of the room stay"
+				},
+				"paymentStatus": {
+					"type": "string",
+					"enum": ["Payment received", "Waiting payment"],
+					"description": "Indicates if the payment has already been received or not"
+				},
+				"actionStatus": {
+					"type": "string",
+					"enum": ["NS", "NO", "FS", "RO", "FH", "ES", "EO"],
+					"description": "Action status set to NS by default. NS - Normal Sell; NO - No-Show; FS - Forced-Sell; RO - Rate-Overridden; FH - Forced-Hurdle; ES - External Forced-Sell; EO - External Rate-Overridden"
+				},
+				"warningIds": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"description": "List of warnings linked to this RoomStay. Used only in response"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Stay index. Will identify the RoomStay inside the reservation all along the reservation life"
+				},
+				"externalStayId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Used To identify a Stay on external booking Engines/ GDSs side"
+				},
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Stay begin date"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Stay end date"
+				},
+				"guestOccIds": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"description": "Reference to the guests occupants"
+				},
+				"stayHolderId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Reference to stay holder"
+				},
+				"roomRates": {
+					"type": "array",
+					"items": {
+						"$ref": "RoomRateRes"
+					},
+					"description": "List of room rates (currently limited to 1)"
+				},
+				"guarantee": {
+					"$ref": "GuaranteeRes",
+					"description": "Details of the mean of guarantee chosen to guarantee its stay. In case of a guarantee required for the stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee its stay. In case of a deposit required for the stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"total": {
+					"$ref": "TotalStay",
+					"description": "total amount of the RoomStay"
+				},
+				"totalBaseOccupancy": {
+					"$ref": "TotalBaseOccupancy",
+					"description": "total amount of the RoomStay without extra person"
+				},
+				"totalExtraOccupancy": {
+					"$ref": "TotalExtraOccupancy",
+					"description": "total amount of the RoomStay for extra person"
+				},
+				"averageRate": {
+					"$ref": "Amount",
+					"description": "Average rate for the stay"
+				},
+				"highestRate": {
+					"$ref": "Amount",
+					"description": "Highest rate for the stay"
+				},
+				"checkInRate": {
+					"$ref": "Amount",
+					"description": "Check In rate for the stay"
+				},
+				"channelPreferredRate": {
+					"type": "string",
+					"enum": ["Check-in", "Highest"],
+					"description": "Indicates the preferred rate to be returned to the requestor channel"
+				},
+				"comments": {
+					"type": "array",
+					"items": {
+						"$ref": "Comment"
+					}
+				},
+				"specialRequests": {
+					"type": "array",
+					"items": {
+						"$ref": "SpecialRequest"
+					},
+					"description": "List the special requests"
+				},
+				"factLines": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					},
+					"description": "List the property facts corresponding to the stay dates"
+				},
+				"serviceRequests": {
+					"type": "array",
+					"items": {
+						"$ref": "ServiceRequest"
+					},
+					"description": "List the service requests"
+				},
+				"specialEvent": {
+					"$ref": "SpecialEvent",
+					"description": "Special event impacting the minimal stay length"
+				},
+				"mainAddress": {
+					"$ref": "Address",
+					"description": "Address of the main guest"
+				},
+				"addresses": {
+					"type": "array",
+					"items": {
+						"$ref": "AddressWithGuestName"
+					}
+				},
+				"telephones": {
+					"type": "array",
+					"items": {
+						"$ref": "TelephoneWithGuestName"
+					}
+				},
+				"emails": {
+					"$ref": "EmailWithGuestName"
+				},
+				"arrivalTime": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] Local hotel time when guests plan to arrive at the hotel, i.e. 22:00"
+				},
+				"departureTime": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] Local hotel time when guests plan to leave the hotel, i.e. 10:00"
+				},
+				"arrivalTransport": {
+					"$ref": "ArrivalTransport",
+					"description": "Details of the mean of transport used by the guests to reach the hotel (or the area)"
+				},
+				"departureTransport": {
+					"$ref": "DepartureTransport",
+					"description": "Details of the mean of transport used by the guests to leave the hotel (or the area)"
+				},
+				"frequentTraveller": {
+					"$ref": "FrequentTraveller",
+					"description": "Loyalty program of the guests with an airline"
+				},
+				"loyaltyProgram": {
+					"$ref": "LoyaltyProgram",
+					"description": "Loyalty program of the guests with hotel provider"
+				},
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] language code of the guests. Must be ISO 639-1"
+				}
+			}
+		},
+
+		"HistoryRoomStayRes": {
+			"id": "HistoryRoomStayRes",
+			"required": ["roomRates", "actionStatus"],
+			"properties": {
+				"paymentStatus": {
+					"type": "string",
+					"enum": ["Payment received", "Waiting payment"],
+					"description": "Indicates if the payment has already been received or not"
+				},
+				"actionStatus": {
+					"type": "string",
+					"enum": ["NS", "NO", "FS", "RO"],
+					"description": "Action status set to NS - Normal Sell by default"
+				},
+				"roomRates": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryRoomRateRes"
+					},
+					"description": "List of room rates (currently limited to 1)"
+				},
+				"guarantee": {
+					"$ref": "GuaranteeRes",
+					"description": "Details of the mean of guarantee chosen to guarantee its stay. In case of a guarantee required for the stay and no guarantee defined at roomStay level, the guarantee defined at hotelReservation level will be used. Mutually exclusive with deposit"
+				},
+				"deposit": {
+					"$ref": "Deposit",
+					"description": "Details of the mean of deposit chosen to guarantee its stay. In case of a deposit required for the stay and no deposit defined at roomStay level, the deposit defined at hotelReservation level will be used. Mutually exclusive with guarantee"
+				},
+				"total": {
+					"$ref": "HistoryTotalStay",
+					"description": "total amount of the RoomStay"
+				},
+				"totalBaseOccupancy": {
+					"$ref": "HistoryTotalBaseOccupancy",
+					"description": "total amount of the RoomStay without extra person"
+				},
+				"totalExtraOccupancy": {
+					"$ref": "HistoryTotalExtraOccupancy",
+					"description": "total amount of the RoomStay for extra person"
+				},
+				"averageRate": {
+					"$ref": "Amount",
+					"description": "Average rate for the stay"
+				}
+			}
+		},
+
+		"Price": {
+			"id": "Price",
+			"required": ["Base"],
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Begin date of a period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date of a period"
+				},
+				"base": {
+					"$ref": "AmountOverInd"
+				}
+			}
+		},
+
+		"Prices": {
+			"id": "Price",
+			"required": ["Base"],
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Begin date of a period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date of a period"
+				},
+				"rateTimeUnit": {
+					"type": "string",
+					"enum": ["Year", "Month", "Week", "Day", "Hour", "Second", "FullDuration", "Minute"],
+					"description": "Pricing frequency of the rate based on OTA TimeUnitType. Day is the value by default. The unitMultiplier and the rateTimeUnit give together the pricing frequency of the rate. If: unitMultiplier:1 and 'rateTimeUnit': 'Day' then the base price is for 1 day"
+				},
+				"unitMultiplier": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Pricing frequency value. The unitMultiplier and the rateTimeUnit give together the pricing frequency of the rate"
+				},
+				"base": {
+					"$ref": "BaseRate"
+				}
+			}
+		},
+
+		"Base": {
+			"id": "Base",
+			"required": ["amount"],
+			"properties": {
+				"amount": {
+					"type": "string",
+					"description": "If provided, this value is used to override the daily amount"
+				}
+			}
+		},
+
+		"RatePlan": {
+			"id": "RatePlan",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[String1..4] Indicates the rate plan code. Is used as a link with the RoomRate element where the rate plan code is also specified"
+				},
+				"description": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					},
+
+					"description": "Short description of the rate plan category"
+				},
+				"priceGridCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..16] Price grid code for this rate category"
+				},
+				"areAmountsConfidential": {
+					"type": "boolean",
+					"description": "Indicates if amounts defined in the rate plan are confidential ones"
+				},
+				"isIdRequired": {
+					"type": "boolean",
+					"description": "Indicates if an ID is required at check-in for this rate category"
+				},
+				"isLoyaltyIdRequired": {
+					"type": "boolean",
+					"description": "Indicates if the pc# is required"
+				},
+				"isVoucherRequired": {
+					"type": "boolean",
+					"description": "Indicates if a coupon voucher is required"
+				},
+				"isRewardEarned": {
+					"type": "boolean",
+					"description": "Indicates if booking this rate gives reward points to the customer"
+				},
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+					"description": "Based on OTA_CodeList RPT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"longDescription": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					},
+					"description": "Long description of the rate plan category"
+				},
+				"buyAndGet": {
+					"$ref": "BuyAndGet",
+					"description": "Shows if the rate plan benefits from a Buy and Get Promotion"
+				}
+			}
+		},
+
+		"RoomType": {
+			"id": "RoomType",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 4,
+					"description": "[String1..4] Indicates the room type code. Is used as a link with the RoomRate element where the room type code is also specified"
+				},
+				"maximumOccupancy": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"maximum": 99,
+					"description": "Maximum occupancy allowed in the room. Up to 99"
+				},
+				"roomAmenities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "Based on OTA Code Type RMA. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"extraPersonStart": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Threshold for charging for extra people"
+				},
+				"description": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					},
+
+					"description": "Short description of the room type"
+				},
+				"longDescription": {
+					"type": "array",
+					"items": {
+						"$ref": "Description"
+					},
+					"description": "Long description of the room type"
+				}
+			}
+		},
+
+		"GuestReq": {
+			"id": "GuestReq",
+			"required": ["personName"],
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32",
+					"description": "References the guests within the reservation. A numeric value is used (unique for each guest). Note: The Holder guest is cross-referenced through ResHolderId at HotelReservations level"
+				},
+				"gender": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 10,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..10] Identifies the gender"
+				},
+				"personName": {
+					"$ref": "PersonName",
+					"description": "Container for structured details of the guest name"
+				}
+			}
+		},
+
+		"Deposit": {
+			"id": "Deposit",
+			"required": ["paymentCode"],
+			"properties": {
+				"paymentCode": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 3, 5, 7, 9, 17, 28, 40],
+					"description": "Based on OTA_CodeList PMT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"paymentCard": {
+					"$ref": "PaymentCard",
+					"description": "Used in case of guarantee per credit card (guaranteeTypeCode: 5). Details of a credit card if the chosen means of payment is a credit card"
+				}
+			}
+		},
+
+		"GuaranteeReq": {
+			"id": "GuaranteeReq",
+			"required": ["guaranteeTypeCode"],
+			"properties": {
+				"guaranteeTypeCode": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [2, 3, 5, 7, 9, 17, 19, 22, 28, 30, 40, 44],
+					"description": "Based on OTA_CodeList PMT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"guaranteeId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..20] Used in case of guarantee per Booking source or CD Number (guaranteeTypeCode: 19 or 30)"
+				},
+				"isValidIata": {
+					"type": "boolean",
+					"description": " If true, iata code used for guarantee is a valid iata, if false, it's an invalid iata. Default value is true."
+				},
+				"paymentCard": {
+					"$ref": "PaymentCard",
+					"description": "Details of a credit card if the chosen guarantee is a credit card. Used in case of guarantee per credit card (guaranteeTypeCode: 5)"
+				}
+			}
+		},
+
+		"GuaranteeRes": {
+			"id": "GuaranteeRes",
+			"required": ["guaranteeTypeCode"],
+			"properties": {
+				"guaranteeTypeCode": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [2, 3, 5, 7, 9, 17, 19, 22, 28, 30, 40, 44],
+					"description": "Based on OTA_CodeList PMT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"guaranteeId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..20] Used in case of guarantee per Booking source or CD Number (guaranteeTypeCode: 19 or 30)"
+				},
+				"paymentCard": {
+					"$ref": "PaymentCard",
+					"description": "Details of a credit card if the chosen guarantee is a credit card. Used in case of guarantee per credit card (guaranteeTypeCode: 5)"
+				}
+			}
+		},
+		"PaymentCard": {
+			"id": "PaymentCard",
+			"required": ["cardCode", "expireDate", "cardNumber"],
+			"properties": {
+				"cardCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] The code of the credit card provider"
+				},
+				"expireDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date]"
+				},
+				"cardNumber": {
+					"$ref": "CardNumber"
+				},
+				"cardHolderName": {
+					"type": "string",
+					"format": "alphanumeric",
+					"minLength": 1,
+					"maxLength": 64,
+					"description": "[AlphaNumeric1..64] Name of the credit card holder. The name should be as written on the credit card."
+				}
+			}
+		},
+
+		"CardNumber": {
+			"id": "CardNumber",
+			"required": ["token"],
+			"properties": {
+				"token": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 19,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..19] Token provided by the requestor"
+				}
+			}
+		},
+
+		"RoomRateReq": {
+			"id": "RoomRateReq",
+			"required": ["startDate", "endDate", "roomTypeCode", "ratePlanCode", "guestCounts"],
+			"properties": {
+				"numberOfRooms": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Number of identical rooms requested. Default value is 1."
+				},
+				"roomTypeCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 4,
+					"description": "[String1..4] Product code. ”roomTypeCode” is used with “ratePlanCode” to determine the product to book"
+				},
+				"ratePlanCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[String1..8] Rate plan code. ”ratePlanCode” is used with “roomTypeCode” to determine the product to book"
+				},
+				"distribInfo": {
+					"$ref": "DistribRoomRateInfo",
+					"description": "Distributed room rate information coming from vendor channel"
+				},
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Start date for this specific RoomRate period. This field is optional if there is only one Roomrate in the Roomstay"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date for this specific RoomRate period. This field is optional if there is only one Roomrate in the Roomstay"
+				},
+				"cdNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..20] Corporate discount Number entered for reservation"
+				},
+				"isCdAutoAppended": {
+					"type": "boolean",
+					"description": "If true, it means the cd number has not been filled explicitely by the requestor"
+				},
+				"rates": {
+					"type": "array",
+					"items": {
+						"$ref": "RateReq"
+					},
+					"description": "Used only to override rate amounts and levels"
+				},
+				"guestCounts": {
+					"type": "array",
+					"items": {
+						"$ref": "GuestCount"
+					}
+				}
+			}
+		},
+		"RoomRateRes": {
+			"id": "RoomRateRes",
+			"required": ["roomTypeCode", "ratePlanCode", "startDate", "endDate", "rates"],
+			"properties": {
+				"numberOfRooms": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Number of identical rooms requested. Default value is 1."
+				},
+				"roomTypeCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 4,
+					"description": "[String1..4] Room Type Code"
+				},
+				"ratePlanCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[String1..8] Rate Plan Code"
+				},
+				"distribInfo": {
+					"$ref": "DistribRoomRateInfo",
+					"description": "Distributed room rate information coming from vendor channel"
+				},
+				"cdNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..20] Corporate discount Number entered for reservation"
+				},
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Start date for this specific RoomRate period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date for this specific RoomRate period"
+				},
+				"minLOS": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Minimum length of stay"
+				},
+				"maxLOS": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Maximum length of stay"
+				},
+				"rates": {
+					"type": "array",
+					"items": {
+						"$ref": "RateRes"
+					},
+					"description": "List of rate amount changes during the stay"
+				},
+				"commission": {
+					"$ref": "Commission",
+					"description": "If sent in response, at least the percent or the Amount in CommissionPayableAmount element should be sent"
+				},
+				"additionalDetails": {
+					"$ref": "Description",
+					"description": "To be used with type attribute equal to 14: Miscellaneous information"
+				},
+				"total": {
+					"$ref": "Total",
+					"description": "total Price of the RoomRate"
+				},
+				"guestCounts": {
+					"type": "array",
+					"items": {
+						"$ref": "GuestCount"
+					}
+				},
+				"policies": {
+					"$ref": "Policies",
+					"description": "Element containing all the policies regarding guarantee, deposit, cancellation, no-show and early check-out"
+				},
+				"advanceBooking": {
+					"$ref": "AdvanceBooking"
+				}
+			}
+		},
+		"DistribRoomRateInfo": {
+			"id": "DistribRoomRateInfo",
+			"properties": {
+				"bookingCode": {
+					"type": "string",
+					"format": "alphanumeric",
+					"description": "Booking code as it is distributed on vendor channel"
+				}
+			}
+		},
+		"HistoryRoomRateRes": {
+			"id": "HistoryRoomRateRes",
+			"required": ["roomTypeCode", "ratePlanCode", "startDate", "endDate", "rates"],
+			"properties": {
+				"numberOfRooms": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Number of identical rooms requested. Default value is 1."
+				},
+				"roomTypeCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 7,
+					"description": "[String1..4] Room Type Code"
+				},
+				"ratePlanCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[String1..8] Rate Plan Code"
+				},
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Start date for this specific RoomRate period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date for this specific RoomRate period"
+				},
+				"rates": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryRateRes"
+					},
+					"description": "List of rate amount changes during the stay"
+				}
+			}
+		},
+
+		"AmountPercent": {
+			"id": "AmountPercent",
+			"properties": {
+				"percent": {
+					"type": "string",
+					"description": "Percentage Used to Compute the Amount - Rule Set by the Client Application 'percent':'3.00'"
+				},
+				"amount": {
+					"type": "string",
+					"description": "Computed deposit amount from the rule Set (Percent)"
+				}
+			}
+		},
+
+		"Dates": {
+			"id": "Dates",
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date]"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date]"
+				}
+			}
+		},
+
+		"AdvanceBooking": {
+			"id": "AdvanceBooking",
+			"properties": {
+				"restrictions": {
+					"$ref": "DatesWithRestrictions",
+					"description": "Advance booking restrictions"
+				},
+				"rules": {
+					"$ref": "AdvanceBookingRule",
+					"description": "Advance booking rule"
+				}
+			}
+		},
+		"DatesWithRestrictions": {
+			"id": "DatesWithRestrictions",
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date]"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date]"
+				},
+				"dowRestriction": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+					},
+					"description": "Specifies the booking restriction based on days of the week if any"
+				}
+			}
+		},
+		"AdvanceBookingRule": {
+			"id": "AdvanceBookingRule",
+			"properties": {
+				"minDays": {
+					"type": "integer",
+					"description": "Minimum number of days required for advance booking"
+				},
+				"maxDays": {
+					"type": "integer",
+					"description": "Maximum number of days required for advance booking"
+				},
+				"isAdvancePurchase": {
+					"type": "boolean",
+					"description": "Advance Purchase rate indicator. By default, false"
+				}
+			}
+		},
+		"CancellationPenalty": {
+			"id": "CancellationPenalty",
+			"properties": {
+				"deadline": {
+					"$ref": "DeadlinePolicy",
+					"description": "Deadline on which the policy will be applied"
+				},
+				"gracePeriod": {
+					"type": "boolean",
+					"description": "If true, indicates that the penalty application period is not started and the reservation can be cancelled without incurring penalties."
+				},
+				"amount": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"description": "Fee amount type (FIRST_NIGHT, LAST_NIGHT, FIRST_AND_LAST_NIGHTS, FLAT_AMOUNT)"
+				},
+				"refundPercentage": {
+					"type": "string",
+					"description": "Percentage of the refund of a cancellation"
+				},
+				"optionalServicesIncluded": {
+					"type": "boolean",
+					"description": "If yes: penalty fees include rooms and all services (optional and included). If no: penalty fees include rooms and included services only. Returned only if the penalty rule is a full stay percentage"
+				},
+				"numberOfNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Number of nights charged in case of cancellation. Mutually exclusive with Amount"
+
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Penalties description"
+				}
+			}
+		},
+		"Penalty": {
+			"id": "Penalty",
+			"properties": {
+				"deadline": {
+					"$ref": "DeadlinePolicy",
+					"description": "Deadline on which the policy will be applied"
+				},
+				"amount": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"description": "Fee amount type (FIRST_NIGHT, LAST_NIGHT, FIRST_AND_LAST_NIGHTS, FLAT_AMOUNT)"
+				},
+				"refundPercentage": {
+					"type": "string",
+					"description": "Percentage of the refund of a cancellation"
+				},
+				"optionalServicesIncluded": {
+					"type": "boolean",
+					"description": "If yes: penalty fees include rooms and all services (optional and included). If no: penalty fees include rooms and included services only. Returned only if the penalty rule is a full stay percentage"
+				},
+				"numberOfNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Number of nights charged in case of cancellation. Mutually exclusive with Amount"
+
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Penalties description"
+				}
+			}
+		},
+
+		"DeadlinePolicy": {
+			"id": "DeadlinePolicy",
+			"properties": {
+				"date": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Date on which the policy will be applied"
+				},
+				"time": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] Time on which the policy will be applied"
+				},
+				"atBooking": {
+					"type": "boolean",
+					"description": "If true, indicates that the penalties apply from when the booking is made"
+				},
+				"numberOfDaysBeforeCheckin": {
+					"type": "integer",
+					"description": "The number of days before check-in when the policy applies"
+				}
+			}
+		},
+
+		"Commission": {
+			"id": "Commission",
+			"properties": {
+				"percent": {
+					"type": "string",
+					"description": "Always greater than 0"
+				},
+				"frequency": {
+					"type": "integer",
+					"format": "int32",
+					"defaultValue": 1,
+					"enum": [1, 12],
+					"description": "Frequency of the commission rule, based on OTA_CodeType CHG. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"capAmount": {
+					"type": "string",
+					"description": "Maximum commission amount"
+				},
+				"maxCommissionUnitApplies": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Max Number of days for the calculation of the commission total"
+				},
+				"flatCommission": {
+					"$ref": "Amount",
+					"description": "Flat rule for commission calculation"
+				},
+				"commissionPayableAmount": {
+					"$ref": "Amount",
+					"description": "Calculated commission"
+				}
+			}
+		},
+
+		"Policies": {
+			"id": "Policies",
+			"properties": {
+				"guarantee": {
+					"$ref": "GuaranteePaymentPolicy",
+					"description": "Payment policies for the guarantee"
+				},
+				"deposit": {
+					"$ref": "DepositPaymentPolicy",
+					"description": "Payment policies for the deposit"
+				},
+				"cancellation": {
+					"$ref": "CancellationPenalty",
+					"description": "Cancellation policy associated to the product booked"
+				},
+				"cancellationNoShow": {
+					"$ref": "CancellationPenalty",
+					"description": "CancellationNoShow policy associated to the product booked"
+				},
+				"noShow": {
+					"$ref": "Penalty",
+					"description": "No-show policy associated to the product booked"
+				},
+				"earlyDeparture": {
+					"$ref": "Penalty",
+					"description": "Early departure policies associated to the product booked"
+				}
+			}
+		},
+
+		"GuaranteePaymentPolicy": {
+			"id": "GuaranteePaymentPolicy",
+			"required": ["isRequired"],
+			"properties": {
+				"time": {
+					"type": "string",
+					"format": "time",
+					"description": "[Time] In case of hold time, “required” field is absent"
+				},
+				"isRequired": {
+					"type": "boolean",
+					"description": "If true, indicates whether the guarantee is required. Will be false in case of hold time"
+				},
+				"acceptedGuarantees": {
+					"$ref": "GuaranteePaymentType",
+					"description": "Defines the list of forms of guarantee accepted for the requested rate plan"
+				},
+				"address": {
+					"$ref": "Address",
+					"description": "In case of payment per check, it’s the hotel address"
+				}
+			}
+		},
+
+		"DepositPaymentPolicy": {
+			"id": "DepositPaymentPolicy",
+			"required": ["isRequired"],
+			"properties": {
+				"isRequired": {
+					"type": "boolean",
+					"description": "If true, indicates whether the deposit or the guarantee is required"
+				},
+				"acceptedDeposits": {
+					"$ref": "DepositPaymentType",
+					"description": "Defines the list of forms of deposit accepted for the requested rate plan"
+				},
+				"amount": {
+					"type": "string",
+					"description": "Amount of the deposit to be paid"
+				},
+				"type": {
+					"type": "string",
+					"description": "Deposit amount type (FirstNight, LastNight, FirstLast, FullStay)"
+				},
+				"deadline": {
+					"$ref": "DeadlinePolicy"
+				},
+				"address": {
+					"$ref": "Address",
+					"description": "In case of payment per check, it’s the hotel address"
+				}
+			}
+		},
+
+		"PaymentPolicyReq": {
+			"id": "PaymentPolicyReq",
+			"properties": {
+				"amountPercent": {
+					"$ref": "Amount",
+					"description": "Used only to override the amount of payment policies"
+				},
+				"deadline": {
+					"$ref": "Deadline",
+					"description": "Used only to override the deadline of payment policies"
+				}
+			}
+		},
+
+		"AmountOverInd": {
+			"id": "AmountOverInd",
+			"required": ["amount"],
+			"properties": {
+				"amount": {
+					"type": "string"
+				},
+				"currency": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"format": "alpha",
+					"description": "[Alphanumeric3] currency code."
+				},
+				"overrideInd": {
+					"type": "boolean",
+					"description": "Flag to indicate the amount was overridden"
+				}
+			}
+		},
+
+		"Amount": {
+			"id": "Amount",
+			"required": ["amount"],
+			"properties": {
+				"amount": {
+					"type": "string"
+				}
+			}
+		},
+
+		"Deadline": {
+			"id": "Deadline",
+			"required": ["absoluteDeadline"],
+			"properties": {
+				"absoluteDeadline": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime]"
+				}
+			}
+		},
+
+
+		"GuaranteePaymentType": {
+			"id": "GuaranteePaymentType",
+			"required": ["types"],
+			"properties": {
+				"types": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["bookingSource", "paymentCard"]
+					},
+					"description": "Indicates the list of payment types accepted by the hotel"
+				},
+				"paymentCards": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 2,
+						"maxLength": 2,
+						"format": "alphanumeric"
+					},
+					"description": "[Alphanumeric2] The 2 character code of the credit card. This field is mandatory if “paymentCard” is specified in the 'types'"
+				}
+			}
+		},
+
+		"DepositPaymentType": {
+			"id": "DepositPaymentType",
+			"required": ["types"],
+			"properties": {
+				"types": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["paymentCard"]
+					},
+					"description": "Indicates the list of deposits accepted by the hotel"
+				},
+				"paymentCards": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 2,
+						"maxLength": 2,
+						"format": "alphanumeric"
+					},
+					"description": "[Alphanumeric2] The 2 character code of the credit card. This field is mandatory if “paymentCard” is specified in the 'types'"
+				}
+			}
+		},
+
+		"RateReq": {
+			"id": "RateReq",
+			"required": ["startDate", "endDate", "base"],
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Begin date of the rate change period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date of the rate change period"
+				},
+				"base": {
+					"$ref": "AmountOverInd",
+					"description": "Used only to override the daily amount"
+				}
+			}
+		},
+
+		"RateRes": {
+			"id": "RateRes",
+			"required": ["startDate", "endDate", "rateTimeUnit", "unitMultiplier", "base", "dailyAmounts"],
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Begin date of the rate change period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date of the rate change period"
+				},
+				"roomPricingType": {
+					"type": "string",
+					"enum": ["Per use", "Per person"],
+					"defaultValue": "Per use",
+					"description": "Indicates the pricing mode of the rate plan: Per person or Per use (per room)"
+				},
+				"rateTimeUnit": {
+					"type": "string",
+					"enum": ["Year", "Month", "Week", "Day", "Hour", "Second", "FullDuration", "Minute"],
+					"description": "Pricing frequency of the rate based on OTA TimeUnitType. Day is the value by default. The unitMultiplier and the rateTimeUnit give together the pricing frequency of the rate"
+				},
+				"unitMultiplier": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Pricing frequency value. The unitMultiplier and the rateTimeUnit give together the pricing frequency of the rate"
+				},
+				"base": {
+					"$ref": "BaseRate"
+				},
+				"dailyAmounts": {
+					"$ref": "DailyAmounts",
+					"description": "Daily amounts for this rate change"
+				},
+				"taxes": {
+					"type": "array",
+					"items": {
+						"$ref": "Tax2"
+					},
+					"description": "Information on the taxes applied to the rate"
+				},
+				"taxGroups": {
+					"type": "array",
+					"items": {
+						"$ref": "TaxGroup"
+					},
+					"description": "Tax amount computed by code and charge unit"
+				}
+			}
+		},
+
+		"HistoryRateRes": {
+			"id": "HistoryRateRes",
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Begin date of the rate change period"
+				},
+				"endDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] End date of the rate change period"
+				},
+				"base": {
+					"$ref": "HistoryBaseRate"
+				},
+				"dailyAmounts": {
+					"$ref": "DailyAmounts",
+					"description": "Daily amounts for this rate change"
+				},
+				"taxes": {
+					"type": "array",
+					"items": {
+						"$ref": "Tax2"
+					},
+					"description": "Information on the taxes applied to the rate"
+				},
+				"taxGroups": {
+					"type": "array",
+					"items": {
+						"$ref": "TaxGroup"
+					},
+					"description": "Tax amount computed by code and charge unit"
+				}
+			}
+		},
+
+		"BaseRate": {
+			"id": "BaseRate",
+			"required": ["amount"],
+			"properties": {
+				"amount": {
+					"type": "string",
+					"description": "Base amount of the product"
+				},
+				"overrideInd": {
+					"type": "boolean",
+					"description": "Flag to indicate the Daily Base amount"
+				}
+			}
+		},
+
+		"HistoryBaseRate": {
+			"id": "HistoryBaseRate",
+			"required": ["amount"],
+			"properties": {
+				"amount": {
+					"type": "string",
+					"description": "Base amount of the product"
+				}
+			}
+		},
+
+		"Guest": {
+			"id": "Guest",
+			"required": ["id", "personName"],
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32",
+					"description": "References the guests within the reservation. A numeric value is used (unique for each guest). Note: The Holder guest is cross-referenced through ResHolderId at HotelReservations level"
+				},
+				"gender": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 10,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..10] Identifies the gender"
+				},
+				"personName": {
+					"$ref": "PersonName",
+					"description": "Container for structured details of the guest name"
+				}
+			}
+		},
+
+		"HistoryGuest": {
+			"id": "HistoryGuest",
+			"required": ["personName"],
+			"properties": {
+				"personName": {
+					"$ref": "PersonName",
+					"description": "Container for structured details of the guest name"
+				}
+			}
+		},
+
+		"DailyAmounts": {
+			"id": "DailyAmounts",
+			"required": ["dailyTotal", "dailyBaseOccupancy", "dailyExtraOccupancy", "dailyExtraPersonCharge"],
+			"properties": {
+				"dailyTotal": {
+					"$ref": "AmountDetails",
+					"description": "Daily amount for the requested occupancy (with extra guests)"
+				},
+				"dailyBaseOccupancy": {
+					"$ref": "AmountDetails",
+					"description": "Daily amount for the base occupancy (without extra guests)"
+				},
+				"dailyExtraOccupancy": {
+					"$ref": "AmountDetails",
+					"description": "Daily amount for the extra occupancy (extra guests only)"
+				},
+				"dailyExtraPersonCharge": {
+					"$ref": "Amount",
+					"description": "Daily amount for 1 extra guest. Present in the response only if an extra person is needed (the requested number of adults is superior to the maximum number of adults without extra beds) or if the channel indicator CHL_ExtraPersonChargeDisplay is set. Never present if no amount is defined for extra person."
+				}
+			}
+		},
+
+		"AmountDetails": {
+			"id": "AmountDetails",
+			"properties": {
+				"amountBeforeTax": {
+					"$ref": "Amount",
+					"description": "Amount before all taxes"
+				},
+				"payableTotal": {
+					"$ref": "Amount",
+					"description": "Amount after tax without taxes payable at the hotel"
+				},
+				"amountAfterTax": {
+					"$ref": "Amount",
+					"description": "Amount after all taxes"
+				}
+			}
+		},
+
+		"PersonName": {
+			"id": "PersonName",
+			"required": ["surname", "givenName"],
+			"properties": {
+				"namePrefix": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 9,
+					"description": "[String1..9] Name prefix"
+				},
+				"givenName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 56,
+					"description": "[String1..56] First Name"
+				},
+				"surname": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 57,
+					"description": "[String1..57] Last Name"
+				},
+				"middleName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 56,
+					"description": "[String1..56] Middle Name"
+				}
+			}
+		},
+
+		"FrequentTraveller": {
+			"id": "FrequentTraveller",
+			"required": ["membershipId"],
+			"properties": {
+				"programId": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric2] Loyalty program owner’s code (for instance “AF” for Air France). May be absent in case it is unknown"
+				},
+				"membershipId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 28,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..28] Unique identifier of the member. “membershipId”: “1234567890” or “membershipId”: “AF1234567890” => in this case programId is not mandatory"
+				}
+			}
+		},
+
+		"LoyaltyProgram": {
+			"id": "LoyaltyProgram",
+			"required": ["loyaltyId"],
+			"properties": {
+				"loyaltyId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 28,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..28] Identifier of the guest"
+				},
+				"programs": {
+					"type": "array",
+					"items": {
+						"$ref": "Programs"
+					},
+					"description": "List of the associated programs"
+				}
+			}
+		},
+
+		"Programs": {
+			"id": "Programs",
+			"properties": {
+				"programName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 5,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..5] Program Name"
+				},
+				"tierLevel": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 5,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric1..5] Level within the program"
+				}
+			}
+		},
+
+		"Total": {
+			"id": "Total",
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "total without taxes. Either amountBeforeTax or amountAfterTax should be present"
+				},
+				"payableTotal": {
+					"type": "string",
+					"description": "total with taxes except those payable at the Hotel (ex: Citytax)"
+				},
+				"amountAfterTax": {
+					"type": "string",
+					"description": "total with all taxes. Either amountBeforeTax or amountAfterTax should be present"
+				},
+				"totalTaxes": {
+					"type": "string",
+					"description": "Flat amount of the sum of taxes. Only used at global level (not for roomstay)"
+				}
+			}
+		},
+
+		"TotalStay": {
+			"id": "TotalStay",
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "total without taxes. Either amountBeforeTax or amountAfterTax should be present"
+				},
+				"payableTotal": {
+					"type": "string",
+					"description": "total with taxes except those payable at the Hotel (ex: Citytax)"
+				},
+				"amountAfterTax": {
+					"type": "string",
+					"description": "total with all taxes. Either amountBeforeTax or amountAfterTax should be present"
+				},
+				"totalTaxes": {
+					"type": "string",
+					"description": "Flat amount of the sum of taxes."
+				},
+				"taxDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "TaxDetail"
+					},
+					"description": "Tax amount computed by code and charge unit"
+				}
+			}
+		},
+
+		"HistoryTotalStay": {
+			"id": "HistoryTotalStay",
+			"properties": {
+				"amountAfterTax": {
+					"type": "string",
+					"description": "total with all taxes. Either amountBeforeTax or amountAfterTax should be present"
+				},
+				"taxDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryTaxDetail"
+					},
+					"description": "Tax amount computed by code and charge unit"
+				}
+			}
+		},
+
+		"TotalBaseOccupancy": {
+			"id": "TotalBaseOccupancy",
+			"required": ["payableTotal"],
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "Base rate total (without extra person charge) for the stay without taxes for one room"
+				},
+				"payableTotal": {
+					"type": "string",
+					"description": "Base rate total (without extra person charge) for the stay without taxes to be paid at the hotel for one room"
+				},
+				"amountAfterTax": {
+					"type": "string",
+					"description": "Base rate total (without extra person charge) for the stay with all taxes for one room"
+				},
+				"totalTaxes": {
+					"type": "string",
+					"description": "total of taxes applicable"
+				},
+				"taxes": {
+					"type": "array",
+					"items": {
+						"$ref": "Tax"
+					},
+					"description": "Amount of each tax"
+				}
+			}
+		},
+
+		"HistoryTotalBaseOccupancy": {
+			"id": "HistoryTotalBaseOccupancy",
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "Base rate total (without extra person charge) for the stay without taxes for one room"
+				}
+			}
+		},
+
+		"TotalExtraOccupancy": {
+			"id": "TotalExtraOccupancy",
+			"required": ["payableTotal"],
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "Extra rate total (extra person only) for the stay without taxes for one room"
+				},
+				"payableTotal": {
+					"type": "string",
+					"description": "Extra rate total (extra person only) for the stay without taxes to be paid at the hotel for one room"
+				},
+				"amountAfterTax": {
+					"type": "string",
+					"description": "Extra rate total (extra person only) for the stay with taxes for one room"
+				},
+				"totalTaxes": {
+					"type": "string",
+					"description": "total of taxes applicable"
+				},
+				"taxes": {
+					"type": "array",
+					"items": {
+						"$ref": "Tax"
+					},
+					"description": "Amount of each tax"
+				}
+			}
+		},
+
+		"HistoryTotalExtraOccupancy": {
+			"id": "HistoryTotalExtraOccupancy",
+			"properties": {
+				"amountBeforeTax": {
+					"type": "string",
+					"description": "Extra rate total (extra person only) for the stay without taxes for one room"
+				}
+			}
+		},
+
+		"Tax": {
+			"id": "Tax",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"includedBeforeAmount": {
+					"type": "boolean",
+					"description": "If true taxes are included in 'amountBeforeTax', if false, taxes are not included in 'amountBeforeTax'"
+				},
+				"includedPayableTotal": {
+					"type": "boolean",
+					"description": "If true taxes are included in 'payableTotal', if false, taxes are not included in 'payableTotal'"
+				},
+				"value": {
+					"type": "Amount",
+					"description": "Flat amount"
+				}
+			}
+		},
+
+		"Tax2": {
+			"id": "Tax2",
+			"required": ["code", "isIncluded"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"isIncluded": {
+					"type": "boolean",
+					"description": "If true, taxes are Included in 'amount'. If false, taxes are not included in 'amount'"
+				},
+				"percent": {
+					"type": "string",
+					"description": "Percent and amount are mutually exclusive"
+				},
+				"value": {
+					"type": "Amount",
+					"description": "Percent and amount are mutually exclusive"
+				},
+				"pricingFrequency": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Night or per Stay"
+				},
+				"pricingMode": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Occupant or per Product"
+				},
+				"daily": {
+					"$ref": "Amount",
+					"description": "Daily Tax Amount"
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Tax description"
+				}
+			}
+		},
+
+		"TaxGroup": {
+			"id": "TaxGroup",
+			"required": ["code", "isIncluded"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"isIncluded": {
+					"type": "boolean",
+					"description": "If true, taxes are Included in 'amount'. If false, taxes are not included in 'amount'"
+				},
+				"pricingFrequency": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Night or per Stay"
+				},
+				"pricingMode": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Occupant or per Product"
+				},
+				"daily": {
+					"$ref": "Amount",
+					"description": "Daily Tax Amount"
+				}
+			}
+		},
+
+		"HistoryTaxGroup": {
+			"id": "HistoryTaxGroup",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"daily": {
+					"$ref": "Amount",
+					"description": "Daily Tax Amount"
+				}
+			}
+		},
+
+		"TaxDetail": {
+			"id": "TaxDetail",
+			"required": ["code", "isIncluded"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"isIncluded": {
+					"type": "boolean",
+					"description": "If true, taxes are Included in 'amount'. If false, taxes are not included in 'amount'"
+				},
+				"pricingFrequency": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Night or per Stay"
+				},
+				"pricingMode": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Occupant or per Product"
+				},
+				"total": {
+					"$ref": "Amount",
+					"description": "Total Tax Amount"
+				}
+			}
+		},
+
+		"HistoryTaxDetail": {
+			"id": "HistoryTaxDetail",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"total": {
+					"$ref": "Amount",
+					"description": "Total Tax Amount"
+				}
+			}
+		},
+
+		"Tax3": {
+			"id": "Tax3",
+			"required": ["code"],
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+					"description": "Identifies the tax type. Valid types based on OTA_CodeType FTT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"amount": {
+					"type": "string",
+					"description": "Flat amount"
+				},
+				"pricingFrequency": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Night or per Stay"
+				},
+				"pricingMode": {
+					"type": "string",
+					"description": "Indicates if the tax is priced per Occupant or per Product"
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Tax description"
+				}
+			}
+		},
+
+		"ReservationIdsRes": {
+			"id": "ReservationIdsRes",
+			"required": ["cfNumber", "imageId"],
+			"properties": {
+				"cfNumber": {
+					"type": "string",
+					"minLength": 8,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric8] Hotel Confirmation Number"
+				},
+				"cxNumber": {
+					"type": "string",
+					"minLength": 8,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric8] Hotel Cancellation Number. Mandatory if the action concerns a cancel"
+				},
+				"imageId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Image  ID (unique per confirmation number)"
+				},
+				"committedSequenceNumber": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "1",
+					"description": "Sequence number of this image among all the committed images in the reservation"
+				},
+				"pnr": {
+					"$ref": "Pnr",
+					"description": "PNR container"
+				},
+				"extCfNumber": {
+					"$ref": "ExtCfNumber",
+					"description": "Container for External Confirmation Number"
+				},
+				"pmsCfNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"description": "[String1..20] PMS confirmation number"
+				},
+				"unsolicitedCancelId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..64] Unique Identifier of the reservation generated by GDS original vendor."
+				}
+			}
+		},
+
+		"HistoryReservationIdsRes": {
+			"id": "HistoryReservationIdsRes",
+			"required": ["cfNumber", "imageId"],
+			"properties": {
+				"cfNumber": {
+					"type": "string",
+					"minLength": 8,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric8] Hotel Confirmation Number"
+				},
+				"cxNumber": {
+					"type": "string",
+					"minLength": 8,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric8] Hotel Cancellation Number. Mandatory if the action concerns a cancel"
+				},
+				"imageId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Image  ID (unique per confirmation number)"
+				},
+				"committedSequenceNumber": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "1",
+					"description": "Sequence number of this image among all the committed images in the reservation"
+				},
+				"pnr": {
+					"$ref": "Pnr",
+					"description": "PNR container"
+				},
+				"extCfNumber": {
+					"$ref": "ExtCfNumber",
+					"description": "Container for External Confirmation Number"
+				},
+				"pmsCfNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 20,
+					"description": "[String1..20] PMS confirmation number"
+				},
+				"unsolicitedCancelId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric1..64] Unique Identifier of the reservation generated by GDS original vendor."
+				}
+			}
+		},
+
+		"CompanyInfo": {
+			"id": "CompanyInfo",
+			"required": ["companyName"],
+			"properties": {
+				"companyName": {
+					"type": "string"
+				},
+				"companyCode": {
+					"type": "integer"
+				}
+			}
+		},
+
+		"BuyAndGet": {
+			"id": "BuyAndGet",
+			"required": ["buyNights", "getNights", "maxNights"],
+			"properties": {
+				"buyNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "0",
+					"description": "Buy x nights..."
+				},
+				"getNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "0",
+					"description": "... and get y nights for free..."
+				},
+				"maxNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "0",
+					"description": "... with a maximum of z nights' stay"
+				},
+				"amount": {
+					"type": "string",
+					"description": "Flat amount discount (exclusive with percent)"
+				},
+				"percent": {
+					"type": "string",
+					"description": "Percentage discount (exclusive with amount)"
+				}
+			}
+		},
+
+		"Email": {
+			"id": "Email",
+			"required": ["email"],
+			"properties": {
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2],
+					"description": "Defines if the given Email Number is business (2) or home (1), based on OTA_CodeType EAT"
+				},
+				"email": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 90,
+					"description": "[String1..90] Email"
+				}
+			}
+		},
+
+		"EmailWithGuestName": {
+			"id": "EmailWithGuestName",
+			"required": ["email"],
+			"properties": {
+				"guestName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] Name of the person related to this email address"
+				},
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2],
+					"description": "Defines if the given Email Number is business (2) or home (1), based on OTA_CodeType EAT"
+				},
+				"email": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 90,
+					"description": "[String1..90] Email"
+				},
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] language code. Must be ISO 639-1"
+				}
+			}
+		},
+
+		"Address": {
+			"id": "Address",
+			"properties": {
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2],
+					"description": "Define if the address is personal (1) or business (2), based on OTA_CodeType CLT"
+				},
+				"addressLines": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 100
+					},
+					"description": "[String1..100] List of address lines"
+				},
+				"cityName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] City Name"
+				},
+				"postalCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "[String1..16] Postal or ZIP code"
+				},
+				"county": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 32,
+					"description": "[String1..25] County name"
+				},
+				"stateProv": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 25,
+					"description": "[String1..25] Abbreviated State name"
+				},
+				"countryName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 25,
+					"description": "[String1..25] Country name"
+				},
+				"countryCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] Country code"
+				},
+				"companyName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] Company Name, makes sense if type is business address"
+				}
+			}
+		},
+
+		"AddressWithGuestName": {
+			"id": "AddressWithGuestName",
+			"properties": {
+				"guestName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] Name of the recipient related to this address"
+				},
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 2],
+					"description": "Define if the address is personal (1) or business (2), based on OTA_CodeType CLT"
+				},
+				"addressLines": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 100
+					},
+					"description": "[String1..100] List of address lines"
+				},
+				"cityName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] City Name"
+				},
+				"postalCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "[String1..16] Postal or ZIP code"
+				},
+				"county": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 32,
+					"description": "[String1..25] County name"
+				},
+				"stateProv": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 25,
+					"description": "[String1..25] Abbreviated State name"
+				},
+				"countryName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 25,
+					"description": "[String1..25] Country name"
+				},
+				"countryCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] Country code"
+				},
+				"companyName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] Company Name, makes sense if type is business address"
+				}
+			}
+		},
+
+		"TelephoneWithGuestName": {
+			"id": "TelephoneWithGuestName",
+			"required": ["phoneNumber"],
+			"properties": {
+				"guestName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 30,
+					"description": "[String1..30] Name of the person related to this phone"
+				},
+				"phoneLocationType": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [6, 7],
+					"description": "Defines if the given phone/fax Number is business (7) or home (6), based on OTA_CodeType PLT"
+				},
+				"phoneTechType": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 3, 5],
+					"description": "The technology associated to the Number, based on OTA_CodeType PTT: 1-Phone, 3-Fax, 5-Mobile"
+				},
+				"phoneCountryCode": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 3,
+					"description": "[Numeric1..3] The country code associated to the phone number"
+				},
+				"phoneAreaCode": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[Numeric1..8] The area code associated to the phone number"
+				},
+				"phoneExtension": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 5,
+					"description": "[Numeric1..5] The extension associated to the phone number"
+				},
+				"phoneNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 57,
+					"description": "[String1..57] Phone / fax Number"
+				}
+			}
+		},
+
+		"Telephone": {
+			"id": "Telephone",
+			"required": ["phoneNumber"],
+			"properties": {
+				"phoneLocationType": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [6, 7],
+					"description": "Defines if the given phone/fax Number is business (7) or home (6), based on OTA_CodeType PLT"
+				},
+				"phoneTechType": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 3, 5],
+					"description": "The technology associated to the Number, based on OTA_CodeType PTT: 1-Phone, 3-Fax, 5-Mobile"
+				},
+				"phoneCountryCode": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 3,
+					"description": "[Numeric1..3] The country code associated to the phone number"
+				},
+				"phoneAreaCode": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 8,
+					"description": "[Numeric1..8] The area code associated to the phone number"
+				},
+				"phoneExtension": {
+					"type": "string",
+					"format": "numeric",
+					"minLength": 1,
+					"maxLength": 5,
+					"description": "[Numeric1..5] The extension associated to the phone number"
+				},
+				"phoneNumber": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 57,
+					"description": "[String1..57] Phone / fax Number"
+				}
+			}
+		},
+
+		"ArrivalTransport": {
+			"id": "ArrivalTransport",
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [2, 3, 5, 8, 9, 14, 17, 18, 20, 21, 26],
+					"description": "Type of transportation, based on OTA Code Type TRP: 2-Boat, 3-Bus, 5-Car, 8-Helicopter, 9-Limousine, 14-Plane, 17-Shuttle, 18-Subway, 20-Taxi, 21-Train, 26-Other or Alternate"
+				},
+				"id": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 32,
+					"description": "[String1..32] Identifier of the transportation method (i.e: flight Number for air, train Number for rail, …). If carrier code exists,  this field is the concatenation Carrier Code + '-' Flight NumberID: 'AF-1234'"
+				},
+				"locationCode": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"format": "alpha",
+					"description": "[Alpha3] IATA code of the destination: ATL"
+				},
+				"time": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Arrival time at destination: 2014-03-12T15:25:00"
+				},
+				"locationDescription": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"description": "[String1..64] Textual identifier of the transportation departure (i.e: train station, bus station, airport terminal): Nice airport"
+				},
+				"terminal": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric2] Terminal of the arrival transportation: T2"
+				},
+				"remoteLocation": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"format": "alpha",
+					"description": "[Alpha3] IATA code departure of the arrival transportation (used only for ARR option in GDS)"
+				}
+			}
+		},
+
+		"DepartureTransport": {
+			"id": "DepartureTransport",
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [2, 3, 5, 8, 9, 14, 17, 18, 20, 21, 26],
+					"description": "Type of transportation, based on OTA Code Type TRP: 2-Boat, 3-Bus, 5-Car, 8-Helicopter, 9-Limousine, 14-Plane, 17-Shuttle, 18-Subway, 20-Taxi, 21-Train, 26-Other or Alternate"
+				},
+				"id": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 32,
+					"description": "[String1..32] Identifier of the transportation method (i.e: flight Number for air, train Number for rail, …). If carrier code exists,  this field is the concatenation Carrier Code + '-'+ Flight NumberID: 'AF-1234'"
+				},
+				"locationCode": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"format": "alpha",
+					"description": "[Alpha3] IATA code of the departure: ATL"
+				},
+				"time": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Transport departure time. Concatenation of Departure date and Departure time if both exists. Time:”2014-03-12T15:25:00”"
+				},
+				"locationDescription": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"description": "[String1..64] Textual identifier of the transportation departure (i.e: train station, bus station, airport terminal): Nice bus station"
+				},
+				"terminal": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric2] Terminal of the departure transportation: T2"
+				}
+			}
+		},
+
+		"Profile": {
+			"id": "Profile",
+			"required": ["profileType", "profileId"],
+			"properties": {
+				"profileType": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [1, 3, 4, 9],
+					"description": "Type of profile associated to the profileID provided, based on OTA_CodeType PRT. See User Guide 'Create a new reservation (2-steps)' for list of values"
+				},
+				"profileId": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 16,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric2..16]"
+				},
+				"profileRole": {
+					"type": "string",
+					"enum": ["Partner", "Intermediary", "Booker"],
+					"description": "Indicates the role of the profile in this reservation"
+				},
+				"guestId": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Indicates which guest is related to this profile. Provided only if the profile is a guest profile"
+				}
+			}
+		},
+
+		"GuestCount": {
+			"id": "GuestCount",
+			"required": ["ageQualifyingCode", "count"],
+			"properties": {
+				"ageQualifyingCode": {
+					"type": "integer",
+					"format": "int32",
+					"enum": [7, 8, 9, 10],
+					"description": "Guest type based on OTA_CodeType AQC (7=Infant, 8=Child, 9=Teenager, 10=Adult)"
+				},
+				"count": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "1",
+					"maximum": "99",
+					"description": "Occupancy of the related guest type. Maximum is 99 and it must be greater or equal than 1"
+				},
+				"age": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": "1",
+					"maximum": "99",
+					"description": "Age of the guest"
+				}
+			}
+		},
+
+		"Comment": {
+			"id": "Comment",
+			"required": ["type", "text"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["supplementary info", "confidential remark", "OriginatorChannelViewable"],
+					"description": "'confidential remark' is not visible by the guest. 'OriginatorChannelViewable' is only valid at reservation level (not roomStay)"
+				},
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] ISO 639-1 code, like 'EN'"
+				},
+				"text": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 1200
+					},
+					"description": "[String1..1200] Free flow text in the comment"
+				}
+			}
+		},
+
+		"Description": {
+			"id": "Description",
+			"required": ["text"],
+			"properties": {
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alpha",
+					"description": "[Alpha2] ISO 639-1 code, like 'EN'"
+				},
+				"text": {
+					"type": "string"
+				}
+			}
+		},
+
+		"SpecialRequest": {
+			"id": "SpecialRequest",
+			"required": ["requestCode"],
+			"properties": {
+				"requestCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "[String1..16] Code of the special request"
+				},
+				"requestDescription": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 1200,
+					"description": "[String1..1200] Description associated to the special request"
+				}
+			}
+		},
+
+		"ServiceRequest": {
+			"id": "ServiceRequest",
+			"required": ["code", "description"],
+			"properties": {
+				"code": {
+					"type": "string",
+					"minLength": 4,
+					"maxLength": 4,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric4] Code of the requested service"
+				},
+				"description": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 1200,
+					"description": "[String1..1200] Description associated to the service request"
+				},
+				"language": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"description": "[Alpha2] Language code. Must be ISO 639-1"
+				},
+				"quantity": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 1,
+					"description": "Number of services asked"
+				}
+			}
+		},
+
+		"Fees": {
+			"id": "Fees",
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["Cancellation", "No-show"]
+				},
+				"amount": {
+					"type": "string"
+				},
+				"optionalServicesIncluded": {
+					"type": "boolean",
+					"description": "If yes: penalty fees include rooms and all services (optional and included). If no: penalty fees include rooms and included services only. Returned only if the penalty rule is a full stay percentage"
+				},
+				"numberOfNights": {
+					"type": "integer",
+					"format": "int32",
+					"minimum": 0,
+					"description": "Number of nights charged in case of cancellation. Mutually exclusive with Amount"
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Penalties description"
+				}
+			}
+		},
+
+		"PaymentDetails": {
+			"id": "PaymentDetails",
+			"properties": {
+				"transactionId": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 9,
+					"format": "alphanumeric",
+					"description": "[Alphanumeric2..9] transaction identifier for the payment"
+				},
+				"dailyPoints": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Daily points cost"
+				},
+				"totalPoints": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Total points cost"
+				}
+			}
+		},
+		"CorporateAccountInfo": {
+			"id": "CorporateAccountInfo",
+			"required": ["accountName"],
+			"properties": {
+				"accountName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 35,
+					"description": "[String1..35] Corporate account name"
+				},
+				"address": {
+					"$ref": "Address",
+					"description": "Container for address of corporate account"
+				},
+				"telephone": {
+					"$ref": "Telephone",
+					"description": "Container for telephone of corporate account"
+				},
+				"email": {
+					"$ref": "Email",
+					"description": "Container for email of corporate account"
+				}
+			}
+		},
+		"HistoryCallCenterInformationRes": {
+			"id": "HistoryCallCenterInformationRes",
+			"required": ["type", "id"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["VDN", "ConnId"],
+					"description": "Type of information"
+				},
+				"id": {
+					"type": "string",
+					"description": "Information details"
+				}
+			}
+		},
+
+		"SpecialEvent": {
+			"id": "SpecialEvent",
+			"required": ["startDate", "minStay"],
+			"properties": {
+				"startDate": {
+					"type": "string",
+					"format": "date",
+					"description": "[Date] Start date of the special event"
+				},
+				"minStay": {
+					"type": "integer",
+					"format": "int32",
+					"description": "Minimal length of stay related to the special event"
+				},
+				"description": {
+					"$ref": "Description",
+					"description": "Description of the special event"
+				}
+			}
+		},
+		"History": {
+			"id": "History",
+			"required": ["resStatus", "imageStatus", "lastModifTime", "reservationIds"],
+			"properties": {
+				"imageStatus": {
+					"type": "string",
+					"enum": ["Pending", "Committed"],
+					"description": "Status of the image of the reservation: Pending => we have this status in 2 steps process after a create and before a commit. Committed => in 2 steps process, we have this status after commit, in 2 step process, we have this status after the reservation creation when all went fine"
+				},
+				"resStatus": {
+					"type": "string",
+					"enum": ["BK", "MY", "CL"],
+					"description": "BK in response to a create reservation, MY in response to a modify reservation, CL in response to a cancel reservation"
+				},
+				"currency": {
+					"type": "string",
+					"minLength": 3,
+					"maxLength": 3,
+					"description": "[Alphanumeric3] Currency code. Valid for all amounts in the response."
+				},
+				"lastModifTime": {
+					"type": "string",
+					"format": "date-time",
+					"description": "[DateTime] Date and Time of the last modification"
+				},
+				"agentName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 56,
+					"description": "Agent name"
+				},
+				"reservationIds": {
+					"$ref": "ReservationIdsRes"
+				},
+				"callCenterInformation": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryCallCenterInformationRes",
+						"description": "List of identifiers on Call Center side"
+					}
+				},
+				"roomStays": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryRoomStayRes",
+						"description": "List of Room Stays (currently limited to 1)"
+					}
+				},
+				"guests": {
+					"type": "array",
+					"items": {
+						"$ref": "HistoryGuest",
+						"description": "List of Guests"
+					}
+				},
+				"indicators": {
+					"type": "array",
+					"items": {
+						"$ref": "Indicators",
+						"description": "List of indicators related to the reservation."
+					}
+				},
+				"hotelSource": {
+					"type": "string",
+					"minLength": 5,
+					"maxLength": 8,
+					"format": "alphanumeric",
+					"description": "[AlphaNumeric5..8] Hotel code on which belongs the originator of the request (used in case of booking tool or PMS)"
+				},
+				"requestorVendorCode": {
+					"type": "string",
+					"description": "the vendor code of the originator of the request"
+				},
+				"requestorChannelSubCode": {
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"format": "alphanumeric",
+					"description": "Sub channel code as it has been provided by the originator of the request"
+				},
+				"agentSine": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "Sign of the travel agent in the GDS used"
+				},
+				"agentUserId": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "User ID of the travel agent in the GDS used"
+				},
+				"agentDutyCode": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 16,
+					"description": "Duty code of the travel agent in the GDS used"
+				}
+			}
+		}
+	}
+}
